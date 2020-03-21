@@ -7,7 +7,23 @@ end
 
 -- HTML colors
 black="#000000"
-COLORFIELD
+color0="#1b0b10"
+color1="#B23C4B"
+color2="#A23662"
+color3="#9D5C6A"
+color4="#F05F60"
+color5="#F49158"
+color6="#FB9173"
+color7="#f4cdb1"
+color8="#aa8f7b"
+color9="#B23C4B"
+color10="#A23662"
+color11="#9D5C6A"
+color12="#F05F60"
+color13="#F49158"
+color14="#FB9173"
+color15="#f4cdb1"
+color66="#1b0b10"
 function fix_text(text)
 	if string.len(text) == 1 then
 		new_text = "0" .. text .. "%"
