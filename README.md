@@ -1,4 +1,4 @@
-<b>conky-pywal</b>
+<b>conky-drawer-interactive</b>
 
 ![alt tag](https://raw.githubusercontent.com/xexpanderx/conky-drawer-interactive/master/screenshot.png)
 
