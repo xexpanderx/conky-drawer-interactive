@@ -7,23 +7,23 @@ end
 
 -- HTML colors
 black="#000000"
-color0="#1b0b10"
-color1="#B23C4B"
-color2="#A23662"
-color3="#9D5C6A"
-color4="#F05F60"
-color5="#F49158"
-color6="#FB9173"
-color7="#f4cdb1"
-color8="#aa8f7b"
-color9="#B23C4B"
-color10="#A23662"
-color11="#9D5C6A"
-color12="#F05F60"
-color13="#F49158"
-color14="#FB9173"
-color15="#f4cdb1"
-color66="#1b0b10"
+color0="#2d224b"
+color1="#3A5E88"
+color2="#B05984"
+color3="#D76C84"
+color4="#4CA293"
+color5="#6AA28D"
+color6="#9EA48A"
+color7="#ebbfb9"
+color8="#a48581"
+color9="#3A5E88"
+color10="#B05984"
+color11="#D76C84"
+color12="#4CA293"
+color13="#6AA28D"
+color14="#9EA48A"
+color15="#ebbfb9"
+color66="#2d224b"
 function fix_text(text)
 	if string.len(text) == 1 then
 		new_text = "0" .. text .. "%"
@@ -387,8 +387,8 @@ function draw_widgets(cr)
 	mouse_y = tonumber(conky_parse("${exec xdotool getmouselocation --shell | grep 'Y' | tr -d 'Y='}"))
 	--Draw background
 	if mouse_x > x and mouse_x < x_max and mouse_y > y and mouse_y < y_max then
-		t0_top=0.5
-		t_top_border=0.2
+		t0_top=0.0
+		t_top_border=0.0
 		t_top_hole=0.5
 		t0_drawer=1
 		t0_drawer_border=0.2
@@ -402,20 +402,20 @@ function draw_widgets(cr)
 		t7_indicator=0.2
 		t8=1
 	else
-		t0_top=0.2
-		t0_drawer=1
+		t0_top=0.0
+		t0_drawer=0
 		t0_drawer_border=0.0
-		t1=1
-		t2=1
-		t3=1
-		t4=1
-		t5=1
-		t6=1
-		t7=1
-		t7_indicator=0.3
-		t8=1
+		t1=0
+		t2=0
+		t3=0
+		t4=0
+		t5=0
+		t6=0
+		t7=0
+		t7_indicator=0.0
+		t8=0
 		t_top_border=0.0
-		t_top_hole=0.3
+		t_top_hole=0.2
 	end
 	draw_background(cr, w, h)
 end

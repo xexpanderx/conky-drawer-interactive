@@ -371,8 +371,8 @@ function draw_widgets(cr)
 	mouse_y = tonumber(conky_parse("${exec xdotool getmouselocation --shell | grep 'Y' | tr -d 'Y='}"))
 	--Draw background
 	if mouse_x > x and mouse_x < x_max and mouse_y > y and mouse_y < y_max then
-		t0_top=0.5
-		t_top_border=0.2
+		t0_top=0.0
+		t_top_border=0.0
 		t_top_hole=0.5
 		t0_drawer=1
 		t0_drawer_border=0.2
@@ -386,7 +386,7 @@ function draw_widgets(cr)
 		t7_indicator=0.2
 		t8=1
 	else
-		t0_top=0.2
+		t0_top=0.0
 		t0_drawer=0
 		t0_drawer_border=0.0
 		t1=0
@@ -399,7 +399,7 @@ function draw_widgets(cr)
 		t7_indicator=0.0
 		t8=0
 		t_top_border=0.0
-		t_top_hole=0.3
+		t_top_hole=0.2
 	end
 	draw_background(cr, w, h)
 end
