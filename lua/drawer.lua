@@ -7,7 +7,7 @@ end
 
 -- HTML colors
 black="#000000"
-color0="#1B0B10"
+color0="#1b0b10"
 color1="#B23C4B"
 color2="#A23662"
 color3="#9D5C6A"
@@ -24,7 +24,6 @@ color13="#F49158"
 color14="#FB9173"
 color15="#f4cdb1"
 color66="#1b0b10"
-
 function fix_text(text)
 	if string.len(text) == 1 then
 		new_text = "0" .. text .. "%"
@@ -242,9 +241,11 @@ function draw_background(cr, w, h)
 	cairo_rel_line_to(cr,22,0)
 	cairo_arc(cr,hdd_x+22, hdd_y-5,10,270*math.pi/180,360*math.pi/180)
 	cairo_arc(cr, hdd_x+22, hdd_y-5+28,10,0*math.pi/180,90*math.pi/180)
+	cairo_rel_line_to(cr,-3,0)
 	cairo_rel_line_to(cr,0,-10)
-	cairo_rel_line_to(cr,-22,0)
+	cairo_rel_line_to(cr,-16,0)
 	cairo_rel_line_to(cr,0,10)
+	cairo_rel_line_to(cr,-3,0)
 	cairo_arc(cr, hdd_x, hdd_y-5+28,10,90*math.pi/180,180*math.pi/180)
 	cairo_close_path(cr)
 	cairo_stroke(cr)
@@ -261,7 +262,7 @@ function draw_background(cr, w, h)
 	----HDD pins
 	cairo_set_line_width(cr, 1)
 	for i=0, 2 do
-		cairo_rectangle (cr,hdd_x+3.5+6*i,hdd_y+26.5, 3, 7);
+		cairo_rectangle (cr,hdd_x+6.5+4*i,hdd_y+26.5, 1, 7);
 		cairo_stroke(cr)
     end
 	--Pathname
@@ -291,19 +292,19 @@ function draw_background(cr, w, h)
 	bat_y = 386
 	bat_move = 9
 	bat_move_y=4
-	cairo_move_to(cr,bat_x,bat_y)
-	cairo_rel_line_to(cr,30,0)
-	cairo_rel_line_to(cr,0,40)
-	cairo_rel_line_to(cr,-30,0)
+	cairo_arc(cr,bat_x+26,bat_y+4,4,270*math.pi/180,0*math.pi/180)
+	cairo_arc(cr,bat_x+26,bat_y+36,4,0*math.pi/180,90*math.pi/180)
+	cairo_arc(cr,bat_x+6,bat_y+36,4,90*math.pi/180,180*math.pi/180)
+	cairo_arc(cr,bat_x+6,bat_y+4,4,180*math.pi/180,270*math.pi/180)
 	cairo_close_path(cr)
 	cairo_stroke(cr)
 	----Top
 	cairo_set_line_width(cr, 2)
-	cairo_move_to(cr,bat_x+bat_move,bat_y-bat_move_y)
+	cairo_move_to(cr,bat_x+bat_move-5+6,bat_y-bat_move_y)
 	cairo_rel_line_to(cr,0,5)
-	cairo_arc(cr,bat_x+bat_move+4,bat_y-bat_move_y,4,180*math.pi/180,270*math.pi/180)
+	cairo_arc(cr,bat_x+bat_move+4-5+6,bat_y-bat_move_y,4,180*math.pi/180,270*math.pi/180)
 	cairo_rel_line_to(cr,6,0)
-	cairo_arc(cr,bat_x+bat_move+8,bat_y-bat_move_y,4,270*math.pi/180,0*math.pi/180)
+	cairo_arc(cr,bat_x+bat_move+8-5+6,bat_y-bat_move_y,4,270*math.pi/180,0*math.pi/180)
 	cairo_rel_line_to(cr,0,4)
 	cairo_stroke(cr)
 	--Indicators
@@ -321,19 +322,37 @@ function draw_background(cr, w, h)
     cairo_fill(cr)
     end
     
-    
 	if battery_status == "C" or battery_status == "F" then
 	    cairo_set_source_rgba(cr, r4, g4, b4, t4)
-		for i=0,2 do
-			cairo_rectangle (cr, bat_x+4.5, bat_y+31-8*i, 21,4);
-			cairo_fill(cr)
-		end
+		cairo_set_line_width(cr, 1)
+		cairo_move_to (cr, bat_x+11, bat_y+13)
+		cairo_rel_line_to(cr,10,0)
+		cairo_stroke(cr)
+		cairo_move_to (cr, bat_x+16, bat_y+12)
+		cairo_rel_line_to(cr,0,-4)
+		cairo_stroke(cr)
+		cairo_move_to (cr, bat_x+16, bat_y+14)
+		cairo_rel_line_to(cr,0,4)
+		cairo_stroke(cr)
+		cairo_move_to (cr, bat_x+11, bat_y+32)
+		cairo_rel_line_to(cr,10,0)
+		cairo_stroke(cr)
+		
 	elseif battery_status == "D" then
-		    cairo_set_source_rgba(cr, r8, g8, b8, t8)
-		for i=0,2 do
-			cairo_rectangle (cr, bat_x+4.5, bat_y+31-8*i, 21,4);
-			cairo_fill(cr)
-		end
+		cairo_set_source_rgba(cr, r8, g8, b8, t8)
+		cairo_set_line_width(cr, 1)
+		cairo_move_to (cr, bat_x+11, bat_y+13)
+		cairo_rel_line_to(cr,10,0)
+		cairo_stroke(cr)
+		cairo_move_to (cr, bat_x+16, bat_y+12)
+		cairo_rel_line_to(cr,0,-4)
+		cairo_stroke(cr)
+		cairo_move_to (cr, bat_x+16, bat_y+14)
+		cairo_rel_line_to(cr,0,4)
+		cairo_stroke(cr)
+		cairo_move_to (cr, bat_x+11, bat_y+32)
+		cairo_rel_line_to(cr,10,0)
+		cairo_stroke(cr)
 	else
 		cairo_set_source_rgba(cr, r7, g7, b7, t7)
 		ct = cairo_text_extents_t:create()
@@ -384,17 +403,17 @@ function draw_widgets(cr)
 		t8=1
 	else
 		t0_top=0.2
-		t0_drawer=0
+		t0_drawer=1
 		t0_drawer_border=0.0
-		t1=0
-		t2=0
-		t3=0
-		t4=0
-		t5=0
-		t6=0
-		t7=0
-		t7_indicator=0.0
-		t8=0
+		t1=1
+		t2=1
+		t3=1
+		t4=1
+		t5=1
+		t6=1
+		t7=1
+		t7_indicator=0.3
+		t8=1
 		t_top_border=0.0
 		t_top_hole=0.3
 	end
