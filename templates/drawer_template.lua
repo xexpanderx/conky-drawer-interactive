@@ -321,6 +321,10 @@ function draw_background(cr, w, h)
 		cairo_move_to (cr, bat_x+11, bat_y+32)
 		cairo_rel_line_to(cr,10,0)
 		cairo_stroke(cr)
+		ct = cairo_text_extents_t:create()
+		cairo_text_extents(cr,battery_status,ct)
+		cairo_move_to(cr,bat_x+16-ct.width/2,bat_y+ct.height/2+20)
+		cairo_show_text(cr,battery_status)
 		
 	elseif battery_status == "D" then
 		cairo_set_source_rgba(cr, r8, g8, b8, t8)
@@ -337,13 +341,16 @@ function draw_background(cr, w, h)
 		cairo_move_to (cr, bat_x+11, bat_y+32)
 		cairo_rel_line_to(cr,10,0)
 		cairo_stroke(cr)
-	else
-		cairo_set_source_rgba(cr, r7, g7, b7, t7)
 		ct = cairo_text_extents_t:create()
-		status=conky_parse("${battery}")
-		cairo_text_extents(cr,status,ct)
-		cairo_move_to(cr,w/2-ct.width/2+20,h/2+ct.height/2+120)
-		cairo_show_text(cr,status)
+		cairo_text_extents(cr,battery_status,ct)
+		cairo_move_to(cr,bat_x+16-ct.width/2,bat_y+ct.height/2+20)
+		cairo_show_text(cr,battery_status)
+	else
+		cairo_set_source_rgba(cr, r8, g8, b8, t8)
+		ct = cairo_text_extents_t:create()
+		cairo_text_extents(cr,battery_status,ct)
+		cairo_move_to(cr,bat_x+16-ct.width/2,bat_y+ct.height/2+20)
+		cairo_show_text(cr,battery_status)
 	end
 end
 
@@ -413,3 +420,4 @@ function conky_start_widgets()
 	cairo_surface_destroy(cs)
 	cairo_destroy(cr)
 end
+

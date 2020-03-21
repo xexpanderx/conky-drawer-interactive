@@ -7,23 +7,23 @@ end
 
 -- HTML colors
 black="#000000"
-color0="#2d224b"
-color1="#3A5E88"
-color2="#B05984"
-color3="#D76C84"
-color4="#4CA293"
-color5="#6AA28D"
-color6="#9EA48A"
-color7="#ebbfb9"
-color8="#a48581"
-color9="#3A5E88"
-color10="#B05984"
-color11="#D76C84"
-color12="#4CA293"
-color13="#6AA28D"
-color14="#9EA48A"
-color15="#ebbfb9"
-color66="#2d224b"
+color0="#1b1216"
+color1="#933130"
+color2="#A45534"
+color3="#D86536"
+color4="#598C34"
+color5="#699437"
+color6="#71AB38"
+color7="#b1d096"
+color8="#7b9169"
+color9="#933130"
+color10="#A45534"
+color11="#D86536"
+color12="#598C34"
+color13="#699437"
+color14="#71AB38"
+color15="#b1d096"
+color66="#1b1216"
 function fix_text(text)
 	if string.len(text) == 1 then
 		new_text = "0" .. text .. "%"
@@ -337,6 +337,10 @@ function draw_background(cr, w, h)
 		cairo_move_to (cr, bat_x+11, bat_y+32)
 		cairo_rel_line_to(cr,10,0)
 		cairo_stroke(cr)
+		ct = cairo_text_extents_t:create()
+		cairo_text_extents(cr,battery_status,ct)
+		cairo_move_to(cr,bat_x+16-ct.width/2,bat_y+ct.height/2+20)
+		cairo_show_text(cr,battery_status)
 		
 	elseif battery_status == "D" then
 		cairo_set_source_rgba(cr, r8, g8, b8, t8)
@@ -353,13 +357,16 @@ function draw_background(cr, w, h)
 		cairo_move_to (cr, bat_x+11, bat_y+32)
 		cairo_rel_line_to(cr,10,0)
 		cairo_stroke(cr)
-	else
-		cairo_set_source_rgba(cr, r7, g7, b7, t7)
 		ct = cairo_text_extents_t:create()
-		status=conky_parse("${battery}")
-		cairo_text_extents(cr,status,ct)
-		cairo_move_to(cr,w/2-ct.width/2+20,h/2+ct.height/2+120)
-		cairo_show_text(cr,status)
+		cairo_text_extents(cr,battery_status,ct)
+		cairo_move_to(cr,bat_x+16-ct.width/2,bat_y+ct.height/2+20)
+		cairo_show_text(cr,battery_status)
+	else
+		cairo_set_source_rgba(cr, r8, g8, b8, t8)
+		ct = cairo_text_extents_t:create()
+		cairo_text_extents(cr,battery_status,ct)
+		cairo_move_to(cr,bat_x+16-ct.width/2,bat_y+ct.height/2+20)
+		cairo_show_text(cr,battery_status)
 	end
 end
 
