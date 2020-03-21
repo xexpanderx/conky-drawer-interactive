@@ -216,32 +216,31 @@ function draw_background(cr, w, h)
     cairo_fill(cr)
     end
     --HDD
-    hdd_x = 75
+    hdd_x = 74
 	hdd_y = 324
 	hdd_move = 10
     cairo_set_source_rgba(cr, r3, g3, b3, t3)
 	cairo_set_line_width(cr, 2)
-	cairo_arc(cr, hdd_x, hdd_y-5,10,180*math.pi/180,270*math.pi/180)
-	cairo_rel_line_to(cr,22,0)
-	cairo_arc(cr,hdd_x+22, hdd_y-5,10,270*math.pi/180,360*math.pi/180)
-	cairo_arc(cr, hdd_x+22, hdd_y-5+28,10,0*math.pi/180,90*math.pi/180)
-	cairo_rel_line_to(cr,-3,0)
+	cairo_arc(cr, hdd_x-6, hdd_y-5-6,4,180*math.pi/180,270*math.pi/180)
+	cairo_arc(cr,hdd_x+28, hdd_y-5-6,4,270*math.pi/180,360*math.pi/180)
+	cairo_arc(cr, hdd_x+28, hdd_y-5-8+42,4,0*math.pi/180,90*math.pi/180)
+	cairo_rel_line_to(cr,-9,0)
 	cairo_rel_line_to(cr,0,-10)
 	cairo_rel_line_to(cr,-16,0)
 	cairo_rel_line_to(cr,0,10)
-	cairo_rel_line_to(cr,-3,0)
-	cairo_arc(cr, hdd_x, hdd_y-5+28,10,90*math.pi/180,180*math.pi/180)
+	cairo_rel_line_to(cr,-9,0)
+	cairo_arc(cr, hdd_x-6, hdd_y-5-8+42,4,90*math.pi/180,180*math.pi/180)
 	cairo_close_path(cr)
 	cairo_stroke(cr)
 	----Holes
-	cairo_arc(cr,hdd_x-5,hdd_y+26,2,0*math.pi/180,360*math.pi/180)
-	cairo_arc(cr,hdd_x+27,hdd_y+26,2,0*math.pi/180,360*math.pi/180)
+	cairo_arc(cr,hdd_x-5,hdd_y+28,2,0*math.pi/180,360*math.pi/180)
+	cairo_arc(cr,hdd_x+27,hdd_y+28,2,0*math.pi/180,360*math.pi/180)
 	cairo_fill(cr)
-	cairo_arc(cr,hdd_x-5,hdd_y-8,2,0*math.pi/180,360*math.pi/180)
-	cairo_arc(cr,hdd_x+27,hdd_y-8,2,0*math.pi/180,360*math.pi/180)
+	cairo_arc(cr,hdd_x-5,hdd_y-10,2,0*math.pi/180,360*math.pi/180)
+	cairo_arc(cr,hdd_x+27,hdd_y-10,2,0*math.pi/180,360*math.pi/180)
 	cairo_fill(cr)
 	---Rectangle
-	cairo_rectangle (cr, hdd_x-5, hdd_y-1, 32, 16);
+	cairo_rectangle (cr, hdd_x-5, hdd_y+1, 32, 16);
 	cairo_stroke(cr)
 	----HDD pins
 	cairo_set_line_width(cr, 1)
@@ -254,19 +253,19 @@ function draw_background(cr, w, h)
 	cairo_set_source_rgba(cr, r8, g8, b8, t8)
 	ct = cairo_text_extents_t:create()
 	cairo_text_extents(cr,"Root",ct)
-    cairo_move_to(cr,hdd_x+11-ct.width/2,hdd_y+6+ct.height/2)
+    cairo_move_to(cr,hdd_x+11-ct.width/2,hdd_y+8+ct.height/2)
     cairo_show_text(cr,"Root")
     ---Hdd indicator
     fs_used = math.floor(4*tonumber(conky_parse("${fs_used_perc " .. "/" .. "}"))/100)
     for i=0, 10 do
-    cairo_set_source_rgba(cr, r7, g7, b7, t7_indicator)
-    cairo_arc(cr,hdd_x+hdd_move/2+52+20*i,hdd_y+hdd_move/2+4,6,0*math.pi/180,360*math.pi/180)
-    cairo_fill(cr)
+		cairo_set_source_rgba(cr, r7, g7, b7, t7_indicator)
+		cairo_arc(cr,hdd_x+hdd_move/2+53+20*i,hdd_y+hdd_move/2+4,6,0*math.pi/180,360*math.pi/180)
+		cairo_fill(cr)
     end
     for i=0, fs_used do
-    cairo_set_source_rgba(cr, r3, g3, b3, t3)
-    cairo_arc(cr,hdd_x+hdd_move/2+52+20*i,hdd_y+hdd_move/2+4,6,0*math.pi/180,360*math.pi/180)
-    cairo_fill(cr)
+		cairo_set_source_rgba(cr, r3, g3, b3, t3)
+		cairo_arc(cr,hdd_x+hdd_move/2+53+20*i,hdd_y+hdd_move/2+4,6,0*math.pi/180,360*math.pi/180)
+		cairo_fill(cr)
     end
     --Battery
  	cairo_set_source_rgba(cr, r4, g4, b4, t4)
