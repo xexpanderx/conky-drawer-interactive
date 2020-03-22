@@ -126,14 +126,14 @@ function draw_background(cr, w, h)
     end
     --Right pins
     for i=0, 4 do
-		cairo_move_to(cr,cpu_x+cpu_move+5+5,cpu_y+3+6*i)
+		cairo_move_to(cr,cpu_x+cpu_move+10,cpu_y+3+6*i)
 		cairo_rel_line_to(cr,-5,0)
 		cairo_close_path(cr)
 		cairo_stroke(cr)
     end
     --Bottom pins
     for i=0, 4 do
-		cairo_move_to(cr,cpu_x+3+6*i,cpu_y+cpu_move+5+5)
+		cairo_move_to(cr,cpu_x+3+6*i,cpu_y+cpu_move+10)
 		cairo_rel_line_to(cr,0,-5)
 		cairo_close_path(cr)
 		cairo_stroke(cr)
@@ -221,15 +221,15 @@ function draw_background(cr, w, h)
 	hdd_move = 10
     cairo_set_source_rgba(cr, r3, g3, b3, t3)
 	cairo_set_line_width(cr, 2)
-	cairo_arc(cr, hdd_x-6, hdd_y-5-6,4,180*math.pi/180,270*math.pi/180)
-	cairo_arc(cr,hdd_x+28, hdd_y-5-6,4,270*math.pi/180,360*math.pi/180)
-	cairo_arc(cr, hdd_x+28, hdd_y-5-8+42,4,0*math.pi/180,90*math.pi/180)
+	cairo_arc(cr, hdd_x-6, hdd_y-11,4,180*math.pi/180,270*math.pi/180)
+	cairo_arc(cr,hdd_x+28, hdd_y-11,4,270*math.pi/180,360*math.pi/180)
+	cairo_arc(cr, hdd_x+28, hdd_y+29,4,0*math.pi/180,90*math.pi/180)
 	cairo_rel_line_to(cr,-9,0)
 	cairo_rel_line_to(cr,0,-10)
 	cairo_rel_line_to(cr,-16,0)
 	cairo_rel_line_to(cr,0,10)
 	cairo_rel_line_to(cr,-9,0)
-	cairo_arc(cr, hdd_x-6, hdd_y-5-8+42,4,90*math.pi/180,180*math.pi/180)
+	cairo_arc(cr, hdd_x-6, hdd_y+29,4,90*math.pi/180,180*math.pi/180)
 	cairo_close_path(cr)
 	cairo_stroke(cr)
 	----Holes
@@ -290,9 +290,9 @@ function draw_background(cr, w, h)
 	cairo_set_line_width(cr, 2)
 	cairo_move_to(cr,bat_x+bat_move-5+6,bat_y-bat_move_y)
 	cairo_rel_line_to(cr,0,5)
-	cairo_arc(cr,bat_x+bat_move+4-5+6,bat_y-bat_move_y,4,180*math.pi/180,270*math.pi/180)
+	cairo_arc(cr,bat_x+bat_move+5,bat_y-bat_move_y,4,180*math.pi/180,270*math.pi/180)
 	cairo_rel_line_to(cr,6,0)
-	cairo_arc(cr,bat_x+bat_move+8-5+6,bat_y-bat_move_y,4,270*math.pi/180,0*math.pi/180)
+	cairo_arc(cr,bat_x+bat_move+9,bat_y-bat_move_y,4,270*math.pi/180,0*math.pi/180)
 	cairo_rel_line_to(cr,0,4)
 	cairo_stroke(cr)
 	--Indicators
@@ -416,4 +416,5 @@ function conky_start_widgets()
 	cairo_surface_destroy(cs)
 	cairo_destroy(cr)
 end
+
 
