@@ -240,7 +240,12 @@ function draw_background(cr, w, h)
 	cairo_arc(cr,hdd_x+27,hdd_y-10,2,0*math.pi/180,360*math.pi/180)
 	cairo_fill(cr)
 	---Rectangle
-	cairo_rectangle (cr, hdd_x-5, hdd_y+1, 32, 16);
+	cairo_set_line_width(cr, 1)
+	cairo_arc(cr,hdd_x-3.5,hdd_y+2.5,2,180*math.pi/180,270*math.pi/180)
+	cairo_arc(cr,hdd_x+25.5,hdd_y+2.5,2,270*math.pi/180,0*math.pi/180)
+	cairo_arc(cr,hdd_x+25.5,hdd_y+14.5,2,0*math.pi/180,90*math.pi/180)
+	cairo_arc(cr,hdd_x-3.5,hdd_y+14.5,2,90*math.pi/180,180*math.pi/180)
+	cairo_close_path(cr)
 	cairo_stroke(cr)
 	----HDD pins
 	cairo_set_line_width(cr, 1)

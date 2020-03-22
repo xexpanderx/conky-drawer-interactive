@@ -7,23 +7,23 @@ end
 
 -- HTML colors
 black="#000000"
-color0="#1b0b10"
-color1="#B23C4B"
-color2="#A23662"
-color3="#9D5C6A"
-color4="#F05F60"
-color5="#F49158"
-color6="#FB9173"
-color7="#f4cdb1"
-color8="#aa8f7b"
-color9="#B23C4B"
-color10="#A23662"
-color11="#9D5C6A"
-color12="#F05F60"
-color13="#F49158"
-color14="#FB9173"
-color15="#f4cdb1"
-color66="#1b0b10"
+color0="#1b1216"
+color1="#933130"
+color2="#A45534"
+color3="#D86536"
+color4="#598C34"
+color5="#699437"
+color6="#71AB38"
+color7="#b1d096"
+color8="#7b9169"
+color9="#933130"
+color10="#A45534"
+color11="#D86536"
+color12="#598C34"
+color13="#699437"
+color14="#71AB38"
+color15="#b1d096"
+color66="#1b1216"
 function fix_text(text)
 	if string.len(text) == 1 then
 		new_text = "0" .. text .. "%"
@@ -256,7 +256,12 @@ function draw_background(cr, w, h)
 	cairo_arc(cr,hdd_x+27,hdd_y-10,2,0*math.pi/180,360*math.pi/180)
 	cairo_fill(cr)
 	---Rectangle
-	cairo_rectangle (cr, hdd_x-5, hdd_y+1, 32, 16);
+	cairo_set_line_width(cr, 1)
+	cairo_arc(cr,hdd_x-3.5,hdd_y+2.5,2,180*math.pi/180,270*math.pi/180)
+	cairo_arc(cr,hdd_x+25.5,hdd_y+2.5,2,270*math.pi/180,0*math.pi/180)
+	cairo_arc(cr,hdd_x+25.5,hdd_y+14.5,2,0*math.pi/180,90*math.pi/180)
+	cairo_arc(cr,hdd_x-3.5,hdd_y+14.5,2,90*math.pi/180,180*math.pi/180)
+	cairo_close_path(cr)
 	cairo_stroke(cr)
 	----HDD pins
 	cairo_set_line_width(cr, 1)
